@@ -1,11 +1,13 @@
 import { Redirect, SplashScreen } from "expo-router";
 import { supabase } from "../utils/supabase";
 import React, { useEffect } from "react";
+import "../constants/index.js";
 
 export default function Index() {
 
   const [appReady, setAppReady] = React.useState(false);
   const [user, setUser] = React.useState();
+  
   
   useEffect(() => {
     async function prepare() {
