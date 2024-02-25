@@ -8,9 +8,9 @@ export default function BookItem({ book }) {
     
     const router = useRouter();
 
-    const goToHouseDetailsPress = async () => {
+    const goToBookDetailsPress = async () => {
         
-        bookParam   = JSON.stringify(book);
+        const bookParam   = JSON.stringify(book);
         
         router.push({ pathname: "books/details", params: { book: bookParam } });
     };
@@ -18,7 +18,7 @@ export default function BookItem({ book }) {
     return (
         <TouchableOpacity href="home/bookDetails"  
             className="w-full py-4 bg-zinc-700 rounded-xl mt-4 px-4"
-            onPress={goToHouseDetailsPress}>
+            onPress={goToBookDetailsPress}>
             <View className="flex flex-row">
                 <View>
                     <Image className="w-16 h-20" source={{ uri: "https://static.wikia.nocookie.net/gameofthrones/images/b/ba/WappenHausBaratheon.PNG/revision/latest/scale-to-width/360?cb=20190201051016&path-prefix=de" }} />

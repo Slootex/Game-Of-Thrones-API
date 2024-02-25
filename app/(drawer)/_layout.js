@@ -12,12 +12,10 @@ export default function Layout() {
     >
         <Drawer.Screen 
             name="home" 
-            gestureEnabled={false}
             options={{
                 drawerLabel : "Home",
                 title: "home",
                 headerShown: false,
-                gestureEnabled: false,
             }}>
         </Drawer.Screen>
 

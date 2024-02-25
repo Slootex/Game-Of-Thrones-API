@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Text, TextInput, View, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BookItem from './BookItem';
+import { useBooksCache } from '../../constants';
 
 let page = 1;
 
 export default function BooksList() {
-    const [books, setBooks]           = useState([]);
+    const [books, setBooks]             = useState([]);
     const [isLoading, setIsLoading]     = useState(false);
+    const [bookCache, setBookCache]     = useBooksCache();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,6 +19,7 @@ export default function BooksList() {
             const fetchedBooks = await getBooksFromAPI(page);
 
             setBooks(fetchedBooks);
+            setBookCache(fetchedBooks);
             setIsLoading(false);
         };
         fetchData();
@@ -28,6 +32,7 @@ export default function BooksList() {
         
         const nextBooks = await getBooksFromAPI();
         setBooks([...books, ...nextBooks]);
+        setBookCache([...bookCache, ...nextBooks]);
 
         setIsLoading(false);
     };
